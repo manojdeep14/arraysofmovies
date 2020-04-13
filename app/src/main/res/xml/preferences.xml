@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+		android:title="@string/title_general">
+
+		<SwitchPreference
+			android:title="@string/title_show_cast"
+			android:key="key_show_cast"
+			android:defaultValue="true" />
+
+
+	</PreferenceCategory>
+
+
+
+
+
+	<PreferenceCategory
+		android:title="About us">
+
+
+
+		<Preference
+
+			android:title="Created by Jeevitha mam students"
+			android:summary="Chandru  Koushik  Muthu SK"
+
+			/>
+
+
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

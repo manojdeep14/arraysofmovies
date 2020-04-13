@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			 xmlns:tools="http://schemas.android.com/tools"
+			 android:layout_width="match_parent"
+			 android:layout_height="match_parent"
+			 tools:context="org.notabug.lifeuser.ArraysOfCinemas.fragment.ShowFragment">
+
+	<android.support.v7.widget.RecyclerView
+	android:id="@+id/showRecyclerView"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="8dip"
+	android:clipToPadding="false"
+	android:background="@color/colorLightGrey"
+	android:scrollbars="none" />
+
+</FrameLayout>

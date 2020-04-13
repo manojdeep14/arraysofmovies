@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	android:id="@+id/scrollView"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="org.notabug.lifeuser.ArraysOfCinemas.activity.FilterActivity">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="10dip">
+
+		<TextView
+			android:id="@+id/sortText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dip"
+			android:textStyle="bold"
+			android:text="@string/sort_by"/>
+
+		<RadioGroup
+			android:id="@+id/sortSelection"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/sortText">
+
+			<RadioButton
+				android:id="@+id/most_popular"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:tag="most_popular"
+				android:text="@string/most_popular"/>
+
+			<RadioButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:tag="best_rated"
+				android:visibility="invisible"
+				android:text="@string/best_rated"/>
+
+			<RadioButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:tag="release_date"
+				android:text="@string/release_date"/>
+
+			<RadioButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:visibility="invisible"
+				android:tag="alphabetic_order"
+				android:text="@string/alphabetic_order"/>
+		</RadioGroup>
+
+		<View
+			android:id="@+id/sortViewSeparator"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_below="@id/sortSelection"
+			android:layout_marginTop="10dip"
+			android:layout_marginBottom="10dip"
+			android:background="?android:attr/listDivider" />
+
+		<LinearLayout
+			android:id="@+id/categoriesLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:layout_below="@id/sortViewSeparator"
+			android:orientation="vertical"
+			android:visibility="invisible">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dip"
+				android:textStyle="bold"
+				android:visibility="invisible"
+				android:text="@string/categories"/>
+
+			<LinearLayout
+				android:id="@+id/categoryCheckBoxesLayout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:visibility="invisible"
+				android:orientation="vertical">
+
+				<CheckBox
+					android:id="@+id/watchingCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:tag="watching"
+					android:text="@string/watching"/>
+
+				<CheckBox
+					android:id="@+id/plannedToWatchCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:tag="plan_to_watch"
+					android:text="@string/plan_to_watch"/>
+
+				<CheckBox
+					android:id="@+id/watchedCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:tag="watched"
+					android:text="@string/watched"/>
+
+				<CheckBox
+					android:id="@+id/onHoldCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:tag="on_hold"
+					android:text="@string/on_hold"/>
+
+				<CheckBox
+					android:id="@+id/droppedCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:tag="dropped"
+					android:text="@string/dropped"/>
+			</LinearLayout>
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginTop="10dip"
+android:visibility="invisible"
+				android:layout_marginBottom="10dip"
+				android:background="?android:attr/listDivider" />
+		</LinearLayout>
+
+		<RelativeLayout
+			android:id="@+id/dateViewLayout"
+			android:visibility="invisible"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/categoriesLayout">
+
+			<TextView
+				android:id="@+id/dateText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dip"
+				android:textStyle="bold"
+				android:text="@string/dates"/>
+
+			<RelativeLayout
+				android:id="@+id/dateLayout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/dateText">
+
+				<CheckBox
+					android:id="@+id/theaterCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:onClick="checkBoxSelected"
+					android:tag="in_theater"
+					android:text="@string/in_the_theater_right_now"/>
+
+				<CheckBox
+					android:id="@+id/twoDatesCheckBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/theaterCheckBox"
+					android:onClick="checkBoxSelected"
+					android:tag="between_dates"
+					android:text="@string/between_two_dates"/>
+
+			</RelativeLayout>
+
+			<TableLayout
+				android:id="@+id/dateDetailsLayout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/dateLayout"
+				android:layout_marginLeft="30dip"
+
+				android:orientation="vertical"
+				android:visibility="invisible">
+
+				<TableRow
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+
+					<TextView
+						android:id="@+id/startDateText"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/start_date"/>
+
+					<Button
+						android:id="@+id/startDateButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:backgroundTint="@color/colorLightGrey"
+						android:drawableRight="@drawable/ic_calendar"
+						android:drawablePadding="5dip"
+						android:onClick="selectDate"
+						android:tag="start_date"/>
+
+				</TableRow>
+
+				<TableRow
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+
+					<TextView
+						android:id="@+id/endDateText"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/end_date"/>
+
+					<Button
+						android:id="@+id/endDateButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:backgroundTint="@color/colorLightGrey"
+						android:drawableRight="@drawable/ic_calendar"
+						android:drawablePadding="5dip"
+						android:onClick="selectDate"
+						android:tag="end_date"/>
+
+				</TableRow>
+
+			</TableLayout>
+
+			<View
+				android:id="@+id/dateViewSeparator"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_below="@id/dateDetailsLayout"
+				android:layout_marginTop="10dip"
+				android:layout_marginBottom="10dip"
+				android:background="?android:attr/listDivider" />
+
+		</RelativeLayout>
+
+		<TextView
+			android:id="@+id/genresText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/dateViewLayout"
+			android:layout_margin="5dip"
+			android:textStyle="bold"
+			android:visibility="invisible"
+			android:text="@string/genres"/>
+
+		<org.apmem.tools.layouts.FlowLayout
+			android:id="@+id/genreButtons"
+			android:layout_width="wrap_content"
+			android:visibility="invisible"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/genresText"
+			android:orientation="horizontal">
+
+		</org.apmem.tools.layouts.FlowLayout>
+
+		<View
+			android:id="@+id/genreViewSeparator"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_below="@id/genreButtons"
+			android:layout_marginTop="10dip"
+			android:visibility="invisible"
+			android:layout_marginBottom="10dip"
+			android:background="?android:attr/listDivider" />
+
+		<RelativeLayout
+			android:id="@+id/advancedTitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/genreViewSeparator"
+			android:clickable="true"
+			android:visibility="invisible"
+			android:onClick="collapseAdvanced">
+
+			<TextView
+				android:id="@+id/AdvancedText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dip"
+				android:textStyle="bold"
+				android:text="@string/advanced"/>
+
+			<ImageView
+				android:id="@+id/collapseIcon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingRight="10dip"
+				android:layout_alignParentEnd="true"
+				android:layout_alignParentRight="true"
+				android:src="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/advancedView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/advancedTitle"
+			android:orientation="vertical"
+
+			android:visibility="invisible">
+
+			<TextView
+				android:id="@+id/keywordText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dip"
+				android:text="@string/keyword_text"/>
+
+			<EditText
+				android:id="@+id/withKeywords"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/keywordText"
+				android:layout_margin="10dip"
+				android:hint="@string/with_keywords_hint"/>
+
+			<EditText
+				android:id="@+id/withoutKeywords"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/withKeywords"
+				android:layout_margin="10dip"
+				android:hint="@string/without_keywords_hint"/>
+
+		</RelativeLayout>
+
+	</RelativeLayout>
+</ScrollView>
